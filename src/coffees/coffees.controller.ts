@@ -30,13 +30,7 @@ export class CoffeesController {
 
     @Post()
     create(@Body() createCoffeeDto: CreateCoffeeDto) {
-        const lastItem = this.coffeeService.findAll();
-        return this.coffeeService.create({
-            id: lastItem[0].id++,
-            name: createCoffeeDto.name,
-            brand: createCoffeeDto.brand,
-            flavours: createCoffeeDto.flavours,
-        });
+        return this.coffeeService.create(createCoffeeDto);
     }
 
     @Patch(':id')
